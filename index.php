@@ -14,7 +14,7 @@ use App\Classes\Page;
 <div class="row">
     <?php
         if(isset($_SESSION['user_token'])){
-            echo '<p>Login successfully</p>';
+            echo '<p>Login successfully</p><p>'.$_SESSION['user_email'].'</p>';
         }
     ?>
     <div class="col-lg-3 col-6">
