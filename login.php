@@ -1,10 +1,8 @@
-<?php
-
-    use App\Classes\Page;
-
+<?php    
     session_start();
-    include './app/includes/autoloader.inc.php';
-    autoloadclass(0);
+    include './app/classes/Page.class.php';
+    // include './app/includes/autoloader.inc.php';
+    // autoloadclass(0);
 
     // Check weather the user is already login
     if(isset($_SESSION['user_token'])){

@@ -1,6 +1,7 @@
 <?php    
     session_start();
-    use App\Classes\Page;
+    // use App\Classes\Page;
+    include './app/classes/Page.class.php'; 
     // Save the current URI in Session
     $_SESSION['prev_uri'] = Page::getCurrentURI();
 ?>

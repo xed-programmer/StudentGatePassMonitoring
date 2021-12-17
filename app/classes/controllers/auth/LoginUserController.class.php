@@ -1,6 +1,6 @@
 <?php
 
-use App\Classes\Page;
+include '../../Page.class.php';
 
 class LoginUserController extends LoginUser{
 

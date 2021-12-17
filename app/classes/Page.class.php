@@ -1,7 +1,5 @@
 <?php
 
-namespace App\Classes;
-
 class Page{    
     public static function asset($link)
     {

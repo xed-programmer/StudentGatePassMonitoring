@@ -1,9 +1,6 @@
-<?php
-
-    use App\Classes\Page;
-
-    include './app/includes/autoloader.inc.php';
-    autoloadclass(0);
+<?php    
+    // include './app/includes/autoloader.inc.php';
+    // autoloadclass(0);
     include './app/resources/views/layouts/app/header.layout.php'; 
     
     // Save the current URI in Session

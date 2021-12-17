@@ -1,7 +1,3 @@
-<?php
-    use App\Classes\Page;    
-?>
-
 <!-- container -->
 </div>
 <!-- content -->
