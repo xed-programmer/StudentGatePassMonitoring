@@ -1,8 +1,7 @@
 <?php
 
-use App\Classes\Page;
+    use App\Classes\Page;
 
-session_start();
     include './app/includes/autoloader.inc.php';
     autoloadclass(0);
     include './app/resources/views/layouts/app/header.layout.php'; 

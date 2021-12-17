@@ -1,5 +1,6 @@
 <?php    
-    use App\Classes\Page;    
+    session_start();
+    use App\Classes\Page;
     // Save the current URI in Session
     $_SESSION['prev_uri'] = Page::getCurrentURI();
 ?>
@@ -99,12 +100,23 @@
 
                 <!-- Right navbar links -->
                 <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-                    <li class="nav-item">
-                        <a href=<?php echo Page::asset('/login.php');?> class="nav-link">Login</a>
+                    <?php
+                        if(isset($_SESSION['user_token'])){
+                            echo '<li class="nav-item">                            
+                            <form action="./app/includes/auth/logout.inc.php" method="POST">
+                            <input type="submit" name="submit" value="Logout">
+                        </form>
+                    </li>';
+                        }else{
+                            echo '<li class="nav-item">
+                            <a href= '.Page::asset('/login.php').' class="nav-link">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a href=<?php echo Page::asset('/register.php');?> class="nav-link">Register</a>
-                    </li>
+                        <a href='.Page::asset('/register.php').' class="nav-link">Register</a>
+                    </li>';
+                    }
+                    ?>
+
                 </ul>
             </div>
         </nav>
