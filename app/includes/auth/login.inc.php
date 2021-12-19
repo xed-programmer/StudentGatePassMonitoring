@@ -1,6 +1,6 @@
 <?php
 // session_start();
-use App\Classes\Page;
+include '../../classes/Page.class.php';
 
 if(isset($_POST['submit'])){
 

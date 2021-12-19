@@ -7,15 +7,7 @@
     // Save the current URI in Session
     $_SESSION['prev_uri'] = Page::getCurrentURI();
 ?>
-
-<div class="row">
-    <?php
-        if(isset($_SESSION['user_token'])){
-            echo '<p>Login successfully</p><p>'.$_SESSION['user_email'].'</p>';
-        }
-    ?>
-</div>
-
+Home Page
 <?php
     include './app/resources/views/layouts/app/footer.layout.php';
 ?>

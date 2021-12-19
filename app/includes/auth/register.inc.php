@@ -1,6 +1,5 @@
 <?php
-session_start();
-use App\Classes\Page;
+include '../../../app/classes/Page.class.php';
 
 if(isset($_POST['submit'])){
 
@@ -20,5 +19,5 @@ if(isset($_POST['submit'])){
     $register->store();
 
     // Going back to fornt page
-    Page::route('/index.php');
+    // Page::route('/index.php');
 }

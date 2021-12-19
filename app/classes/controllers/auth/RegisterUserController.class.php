@@ -1,6 +1,6 @@
 <?php
 
-include '../../Page.class.php';
+include '../../../../app/classes/Page.class.php';
 
 class RegisterUserController extends RegisterUser{
 

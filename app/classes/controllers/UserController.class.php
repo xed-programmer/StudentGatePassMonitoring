@@ -1,10 +1,5 @@
 <?php
 
-use App\Classes\Page;
-
-include '../../includes/autoloader.inc.php';
-autoloadclass(2);
-
 class UserController extends User{
 
     public function userLogin($username, $password)
