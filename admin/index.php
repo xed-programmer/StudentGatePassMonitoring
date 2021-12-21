@@ -21,9 +21,10 @@
         <div class="row mb-2">
             <div class="col-sm-6">
                 <h1 class="m-0">Dashboard</h1>
-            </div>
-        </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
+                </di v>
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
 </div>
 <div class="row">
     <div class="col-lg-3 col-6">
@@ -86,6 +87,16 @@
                     class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
+</div>
+
+<div class="row">
+    <?php
+        $attendances = $admin->getStudentAttendance();
+        
+        foreach($attendances as $attendance){
+            echo "<p>$attendance->name</p>";
+        }
+    ?>
 </div>
 <?php
     include '../app/resources/views/layouts/admin/footer.layout.php';

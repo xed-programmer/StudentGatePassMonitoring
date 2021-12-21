@@ -6,4 +6,9 @@ class AdminController extends Admin{
     {
         return $this->count($table);
     }
+
+    public function getStudentAttendance()
+    {
+        return $this->studentAttendance();
+    }
 }
