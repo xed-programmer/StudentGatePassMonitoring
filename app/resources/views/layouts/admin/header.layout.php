@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href=<?php echo Page::asset('/public/dist/css/adminlte.min.css');?>>
+    <script src=<?php echo Page::asset('/public/plugins/jquery/jquery.min.js')?>></script>
 </head>
 
 <body class="sidebar-mini sidebar-closed sidebar-collapse" style="height: auto;">
@@ -38,7 +39,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link">Home</a>
+                    <a href=<?php echo Page::asset('/index.php');?> class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
