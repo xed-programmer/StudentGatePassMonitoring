@@ -62,7 +62,14 @@
                         <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div> -->
                     <div class="info">
-                        <a href="#" class="d-block">ADMIN</a>
+                        <a href="#" class="d-block">
+                            <?php 
+                                // Display user email
+                                if(isset($_SESSION['user_email'])){
+                                    echo $_SESSION['user_email'];
+                                }
+                            ?>
+                        </a>
                     </div>
                 </div>
 
