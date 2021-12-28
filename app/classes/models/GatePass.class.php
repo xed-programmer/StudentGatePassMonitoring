@@ -14,8 +14,7 @@ class GatePass extends Database{
                     //check if the student tap rfid within 60 seconds
                     $now = DateTime::createFromFormat("Y-m-d H:i:s", date("Y-m-d H:i:s"));
                     // $t stands for target
-                    $t = DateTime::createFromFormat("Y-m-d H:i:s", $attendances['created_at']);
-                    // $t = (count($attendances) > 1)? $attendances[0]['created_at'] : $attendances['created_at'];
+                    $t = DateTime::createFromFormat("Y-m-d H:i:s", $attendances[0]['created_at']);                    
                 
                     $d1 = mktime((int)$now->format("H"),(int)$now->format("i"),(int)$now->format("s"),(int)$now->format("m"),(int)$now->format("d"),(int)$now->format("Y"),);
                 
@@ -28,14 +27,13 @@ class GatePass extends Database{
                 }
             }
 
-            $status = (count($attendances)%2 == 0)? 'time-in' : 'time-out';
-            return $status . ' ' . count($attendances);
-            // $conn = $this->connect();
-            // $sql = "INSERT INTO " . $this->acronym . "attendances (user_id, status, created_at) VALUES(?,?,NOW())";
-            // $stmt = $conn->prepare($sql);
+            $status = (count($attendances)%2 == 0)? 'time-in' : 'time-out';            
+            $conn = $this->connect();
+            $sql = "INSERT INTO " . $this->acronym . "attendances (user_id, status, created_at) VALUES(?,?,NOW())";
+            $stmt = $conn->prepare($sql);
             
-            // $stmt->bind_param('is', $student_user['id'], $status);
-            // return $stmt->execute();
+            $stmt->bind_param('is', $student_user['id'], $status);
+            return $stmt->execute();
         }
 
         return $attendances;
@@ -58,17 +56,18 @@ class GatePass extends Database{
     
     private function getStudentAttendances($id)
     {
-        $conn = $this->connect();
-        $sql = "SELECT * FROM " . $this->acronym . "attendances WHERE user_id = ? AND created_at > ?";
+        $conn = $this->connect();               
+        $sql = "SELECT * FROM " . $this->acronym . "attendances WHERE user_id = ? AND created_at > FROM_UNIXTIME(?)";
         $stmt = $conn->prepare($sql);
-        
-        $today = DateTime::createFromFormat("Y-m-d H:i:s", date("Y-m-d 00:00:00.0"));
+                
+        $today = strtotime(date("Y-m-d 00:00:00.0"));
         $stmt->bind_param('ii', $id, $today);
         if($stmt->execute()){
-            $result = $stmt->get_result();
+            $result = $stmt->get_result();          
         }
         $stmt->free_result();
-
-        return $result->fetch_assoc();   
+        
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        return ($data != null)? $data : [];
     }
 }

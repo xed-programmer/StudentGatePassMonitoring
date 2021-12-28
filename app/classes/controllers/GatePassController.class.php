@@ -15,12 +15,12 @@ class GatePassController extends GatePass{
             Page::route('/gatepass.php');
         }
 
-        // if($this->scanStudentCode($this->student_code)){
-        //     Page::route('/gatepass.php?message=success');
-        // }else{
-        //     Page::route('/gatepass.php?message=failed');
-        // }
-        echo var_dump($this->scanStudentCode($this->student_code));
+        if($this->scanStudentCode($this->student_code)){
+            Page::route('/gatepass.php?message=success');
+        }else{
+            Page::route('/gatepass.php?message=failed');
+        }
+        // echo var_dump($this->scanStudentCode($this->student_code));
     }
 
     private function empytInput()
