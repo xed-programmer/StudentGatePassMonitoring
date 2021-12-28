@@ -23,14 +23,16 @@ class Admin extends Database{
     protected function studentAttendance()
     {
         $conn = $this->connect();
-        $sql = "SELECT a.*, u.name, u.email FROM ". $this->acronym. "attendances a " .
-        "INNER JOIN ". $this->acronym. "users u ON u.id = a.user_id ORDER BY a.created_at DESC";
+        $sql = "SELECT a.*, s.student_code, s.course, s.year, s.section, u.name, u.email FROM ". $this->acronym. "attendances a " .
+        "INNER JOIN ". $this->acronym. "users u ON u.id = a.user_id " .
+         "INNER JOIN ". $this->acronym ."students s ON s.user_id = a.user_id " .
+         "ORDER BY a.created_at DESC";
                 
         if($stmt = $conn->prepare($sql)){
             // $stmt->bind_param('s', $table);
             $stmt->execute();
             if($result = $stmt->get_result()){
-                if($row = $result->fetch_assoc()){
+                if($row = $result->fetch_all(MYSQLI_ASSOC)){
                     return $row;
                 }
             }else{

@@ -125,28 +125,27 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    $attendances = $admin->getStudentAttendance();
-                                    
+                                    $attendances = $admin->getStudentAttendance();                                    
                                     foreach($attendances as $attendance){                                        
                                         echo '<tr>
                                         <td class="dtr-control sorting_1" tabindex="0">
-                                            '. $attendance->name .'
+                                            '. $attendance['name'] .'
                                         </td>
                                         <td class="dtr-control sorting_1" tabindex="0">
-                                        '. $attendance->name .'
+                                        '. $attendance['student_code'] .'
                                         </td>
                                         <td class="dtr-control sorting_1" tabindex="0">
-                                            '. $attendance->name .'</td>
+                                            '. $attendance['course'] .'</td>
                                         <td class="dtr-control sorting_1" tabindex="0">
-                                            '. $attendance->name .'</td>
+                                            '. $attendance['year'] .'</td>
                                         <td class="dtr-control sorting_1" tabindex="0">
-                                            '. $attendance->name .'</td>
+                                            '. $attendance['section'] .'</td>
                                         <td class="dtr-control sorting_1" tabindex="0">
-                                        '. $attendance->name .'</td>
+                                        '. $attendance['status'] .'</td>
                                         <td class="dtr-control sorting_1" tabindex="0">
-                                            '. $attendance->name .'</td>
+                                            '. date("D, M. d", strtotime($attendance['created_at'])) .'</td>
                                         <td class="dtr-control sorting_1" tabindex="0">
-                                            '. $attendance->name .'</td>
+                                            '. date("h:i A", strtotime($attendance['created_at'])) .'</td>
                                     </tr>';
                                     }
                                 ?>
