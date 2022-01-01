@@ -21,9 +21,9 @@ class LoginUserController extends LoginUser{
         if(!$this->invalidEmail()){
             Page::route('/login.php?error=emptyinput');
         }
-        if(!$this->emailTakenCheck()){
-            Page::route('/login.php?error=emailnotexist');
-        }
+        // if(!$this->emailTakenCheck()){
+        //     Page::route('/login.php?error=emailnotexist');
+        // }
 
         $this->loginUser($this->email, $this->password);
     }
@@ -48,15 +48,8 @@ class LoginUserController extends LoginUser{
         return $result;
     }
 
-
     private function emailTakenCheck()
-    {
-        $result = null;
-        if($this->checkUser($this->email)){
-             $result = true;             
-        }else{
-            $result = false;
-        }
-        return $result;
+    {        
+        return $this->checkUser($this->email);
     }
 }

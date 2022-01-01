@@ -18,17 +18,8 @@ class LoginUser extends Database {
 
         $result = $stmt->get_result();
 
-        $resultCheck = null;        
-        if($result->num_rows > 0){
-            $resultCheck = true;
-        }else{
-            $resultCheck = false;
-        }
-        $stmt = null;        
-        while($obj = $result->fetch_assoc()){
-            $_SESSION['user_token'] = $obj['id'];	
-        }
-        return $resultCheck;
+        $stmt = null;
+        return ($result->num_rows > 0);
     }
 
     protected function loginUser($email, $password)
