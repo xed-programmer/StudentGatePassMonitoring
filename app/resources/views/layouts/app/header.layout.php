@@ -52,10 +52,10 @@
                     <!-- Left navbar links -->
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="index3.html" class="nav-link">Home</a>
+                            <a href=<?php echo Page::asset('/index.php')?> class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Contact</a>
+                            <a href="#" class="nav-link">Announcements</a>
                         </li>
                     </ul>
                 </div>
