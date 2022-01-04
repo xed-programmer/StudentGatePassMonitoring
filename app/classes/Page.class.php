@@ -3,16 +3,16 @@
 class Page{    
     public static function asset($link)
     {
-        $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";  
-        $host = $protocol . $_SERVER['HTTP_HOST'] . '/studentgatepassmonitoring';  
+        $protocol = (self::isServer()) ? "https://" : "http://";  
+        $host = self::getHost($protocol);  
 
         return $host . $link;
     }
 
     public static function route($uri)
     {
-        $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";  
-        $host = $protocol . $_SERVER['HTTP_HOST'] . '/studentgatepassmonitoring';  
+        $protocol =  (self::isServer()) ? "https://" : "http://";  
+        $host = self::getHost($protocol);  
 
         header('Location: '. $host . $uri);
         exit();
@@ -20,9 +20,22 @@ class Page{
 
     public static function getCurrentURI()
     {
-        $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+        $protocol = (self::isServer()) ? "https://" : "http://";
  
         $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         return $url;
+    }
+
+    private static function isServer()
+    {
+        return ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443);
+    }
+
+    private static function getHost($protocol){
+        if(self::isServer()){
+            return $protocol . $_SERVER['HTTP_HOST'] . '/bscs/DGJMP/StudentGatePassMonitoring';
+        }else{
+            return $protocol . $_SERVER['HTTP_HOST'] . '/studentgatepassmonitoring'; 
+        }
     }
 }
