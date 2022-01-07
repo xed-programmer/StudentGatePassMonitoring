@@ -21,7 +21,7 @@
             }
         ?>
     </title>
-
+    <link rel = "icon" type = "image/png" href = "public\dist\img\logosecuritya.png">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -39,7 +39,7 @@
         <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
             <div class="container">
                 <a href="../../index3.html" class="navbar-brand">
-                    <span class="brand-text font-weight-light">LOGO</span>
+                    <img src="public\dist\img\logosecuritya.png" width="30" height="30"/>
                 </a>
 
                 <button class="navbar-toggler order-1" type="button" data-toggle="collapse"
